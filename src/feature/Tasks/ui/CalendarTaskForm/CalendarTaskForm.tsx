@@ -1,5 +1,5 @@
 import { AddNewTaskProps, ChangeTasksTextsProps } from "feature/Tasks/model/types/calendarTasks";
-import { ChangeEventHandler, useEffect, useRef, useState } from "react";
+import { ChangeEventHandler, useCallback, useEffect, useRef, useState } from "react";
 
 interface CalendarTaskFormProps {
     withUrgent?: boolean;
@@ -55,13 +55,19 @@ export const CalendarTaskForm = (props: CalendarTaskFormProps) => {
         } else setIsError(true);
     };
 
-    const handleClose = () => {
-        onCancel();
-    };
+    const handleClose = useCallback(() => onCancel(), [onCancel]);
 
     useEffect(() => {
         if (makeFocus) inputRef.current?.focus();
     }, [makeFocus]);
+
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === "Escape") handleClose();
+        };
+        document.addEventListener("keydown", handleKeyDown);
+        return () => document.removeEventListener("keydown", handleKeyDown);
+    }, [handleClose]);
 
     return (
         <div className="form">

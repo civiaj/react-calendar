@@ -295,15 +295,16 @@ svg {
     right: 0;
 }
 
-.modalContainer {
+.modalOverlay {
     height: 100vh;
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .modalContent {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background-color: white;
     border: 1px solid var(--color-grey-200);
     box-shadow: 0px 0px 5px 0 var(--color-grey-200);

@@ -13,7 +13,7 @@ export const ViewYears = () => {
             years.map((row, index) => (
                 <ul className="flex" key={index}>
                     {row.map((dateString) => (
-                        <CalendarYear exist={false} key={dateString} dateString={dateString} />
+                        <CalendarYear key={dateString} dateString={dateString} />
                     ))}
                 </ul>
             )),

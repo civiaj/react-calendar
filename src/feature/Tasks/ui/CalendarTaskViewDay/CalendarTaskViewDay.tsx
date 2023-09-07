@@ -5,7 +5,7 @@ import { AddNewTaskProps } from "feature/Tasks/model/types/calendarTasks";
 import { CalendarTask } from "feature/Tasks/ui/CalendarTask/CalendarTask";
 import { CalendarTaskForm } from "feature/Tasks/ui/CalendarTaskForm/CalendarTaskForm";
 import { CalendarTaskModal } from "feature/Tasks/ui/CalendarTaskModal/CalendarTaskModal";
-import { useEffect, useMemo } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 
 interface CalendarTaskViewDayProps {
     activeDate: string;
@@ -16,7 +16,7 @@ export const CalendarTaskViewDay = ({ activeDate }: CalendarTaskViewDayProps) =>
     const isAdding = useAppSelector(getTaskIsAdding);
     const tasks = useAppSelector(getTasks);
     const isModal = useAppSelector(getIsModal);
-    const onCancelTask = () => dispatch(tasksActions.setInitial());
+    const onCancelTask = useCallback(() => dispatch(tasksActions.setInitial()), [dispatch]);
     const onAddNewTask = (newTask: AddNewTaskProps) => dispatch(tasksActions.addNewTask(newTask));
     const onAdding = () => dispatch(tasksActions.changeIsAdding());
 
