@@ -1,0 +1,9 @@
+export { TbCheck as Check } from "react-icons/tb";
+export { TbDotsVertical as Kebab } from "react-icons/tb";
+export { TbX as Close } from "react-icons/tb";
+export { TbTrashX as Delete } from "react-icons/tb";
+export { TbArrowBigRightLines as Process } from "react-icons/tb";
+export { TbExclamationCircle as Urgent } from "react-icons/tb";
+export { TbClock as Usual } from "react-icons/tb";
+export { TbEdit as Edit } from "react-icons/tb";
+export { TbHome2 as Home } from "react-icons/tb";
